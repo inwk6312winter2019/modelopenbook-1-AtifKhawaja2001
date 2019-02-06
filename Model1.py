@@ -5,11 +5,15 @@ def list_ifname_ip():
 	l = []
 	for line in fout:
 		line1 = line.split()
-		for i in range(len(line1)-2):
+		for i in range(len(line1)-1):
 			if line1[i] == 'nameif':
-				pass
-				print(line1[i+1])
+				l.append(line1[i+1])
+		for i in range(len(line1)-2):
 			if line1[i] == 'ip':
 				if line1[i+1] == 'address':
-					print(line1[i+2],line1[i+3])
+					l.append(line1[i+2])
+					l.append(line1[i+3])
+
+	print(l)
+
 list_ifname_ip()
